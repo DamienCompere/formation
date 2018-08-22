@@ -6,6 +6,7 @@ $factory->define(App\Post::class, function (Faker $faker) {
     return [
         'title'=>$faker->sentence(),
         'post_type'=>$faker->randomElement(['formation', 'stage', 'undetermined']),
+        'status'=>$faker->randomElement(['published', 'unpublished']),
         'description'=>$faker->paragraph(),
         'start_date'=>$faker->dateTime(),
         'end_date'=>$faker->dateTime(),

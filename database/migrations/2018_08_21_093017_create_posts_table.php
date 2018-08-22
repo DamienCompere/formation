@@ -22,6 +22,7 @@ class CreatePostsTable extends Migration
             $table->dateTime('end_date')->nullable(); 
             $table->decimal('price', 8, 2)->default('0.00'); // obligatoire
             $table->smallInteger('nb_max')->nullable(); 
+            $table->enum('status', ['published', 'unpublished'])->default('unpublished');
             $table->timestamps();
         });
     }
