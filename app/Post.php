@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     public function picture(){
-        return $this->belongsTo(Picture::class);
+        return $this->hasOne(Picture::class);
     }
 
     public function categories(){
