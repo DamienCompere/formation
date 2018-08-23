@@ -1,4 +1,7 @@
-<div class="form-group ">
-    <label for="usr">Search:</label>
-    <input type="search" class="form-control" id="usr">
-</div>
+<div class="search-container">
+    <form action="/search" method="POST" role="search" > 
+    {{ csrf_field() }}
+      <input type="text" placeholder="rechercher.." name="q">
+      <button type="submit">Va chercher !</button>
+    </form>
+  </div> 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use Illuminate\Support\Facades\Input;
 
 class FrontController extends Controller
 {
@@ -34,5 +35,20 @@ class FrontController extends Controller
         // $posts = DB::table('posts')->where('post_type', 'formation')->get();
         $posts = Post::where('post_type', "=", 'formation')->get();
         return view('front.formation', ['posts'=>$posts]);
+        
+    }
+
+    public function search(){
+        $q = Input::get('q');
+        if($q != ' '){
+            $posts = Post::where('title', 'LIKE', '%' . $q . '%')
+            ->orWhere('description', 'LIKE', '%' . $q . '%')
+            ->get();
+
+            if(count($posts) > 0){
+                return view('front.search')->withDetails($posts)->withQuery($q);
+            }
+        }
+        return view('front.search')->withMessage('Rien trouvé Antoine !');
     }
 }
