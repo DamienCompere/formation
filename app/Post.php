@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Carbon\Carbon;
+
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
@@ -12,5 +14,11 @@ class Post extends Model
 
     public function categories(){
         return $this->belongsToMany(Category::class);
+    }
+
+    public function scopePublished($query){
+        $now = Carbon::now()->format('Y-m-d h:i:s');
+
+        return $query->where('start_date', '>', $now);
     }
 }

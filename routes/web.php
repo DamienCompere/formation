@@ -16,12 +16,11 @@ Route::get('/', 'FrontController@index');
 // Route pour afficher un post 
 Route::get('post/{id}', 'FrontController@show')->where(['id'=>'[0-9]+']);
 
+Auth::routes();
+Route::get('/stage', 'FrontController@showStage')->name('stage');
+Route::get('/formation', 'FrontController@showFormation')->name('formation');
 
-// Exemple de Route avec Parametre, partie recherche se trouve dans les route
-// Route::get('test', function(){
-//     return "je suis un test";
-// });
 
-// Route::get('posts/{id}', function($id){
-//     return App\Post::find($id);
-// });
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('admin/post', 'PostController')->middleware('auth');

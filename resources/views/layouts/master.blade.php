@@ -13,14 +13,16 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-            <!-- mettre le menu ici -->
+            @include('partials.menu')
             </div>
+            @include('partials.searchBar')
         </div>
         <div class="row">
             <div class="col-sm-12">
             @yield('content')
             </div>
         </div>
+        @include('partials.menu')
     </div>
 @section('scripts')
 <script src="{{asset('js/app.js')}}"></script>
