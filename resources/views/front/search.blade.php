@@ -5,15 +5,15 @@
 <!-- barre de recherche -->
 <div class="container">
     <h1>Page de recherche</h1>
-    @if(isset($details))
-        <p>Le résultat de la recherche {{$query}} est :</p>
-        @forelse($details as $post)
-
-        <p>{{$post->title}}</p>
-
-        @empty
-        @endforelse
-
-    @endif
+    {{$posts->links()}}
+    <ul>
+    @forelse($posts as $post)
+    <li>{{ $post->title }}</li>
+    @empty 
+    <li>désolé aucun résultat</li>
+    @endforelse
+    </ul>
+    {{$posts->links()}}
+    
 </div>
 @endsection

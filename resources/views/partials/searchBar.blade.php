@@ -1,7 +1,6 @@
 <div class="search-container">
-    <form action="/search" method="POST" role="search" > 
-    {{ csrf_field() }}
-      <input type="text" placeholder="rechercher.." name="q">
+    <form action="{{route('search')}}" method="get" role="search" > 
+      <input type="text" placeholder="rechercher.." name="word">
       <button type="submit">Va chercher !</button>
     </form>
   </div> 

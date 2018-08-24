@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Input;
 
 class FrontController extends Controller
 {
+
+
     public function index(){
         
         $posts = Post::published()->limit(2)->get();
@@ -20,6 +22,7 @@ class FrontController extends Controller
     public function show(int $id){
         //On cherche le post en question
         $post = Post::find($id);
+
         return view('front.show', ['post'=>$post]);
     }
 
@@ -34,21 +37,27 @@ class FrontController extends Controller
     public function showFormation(){
         // $posts = DB::table('posts')->where('post_type', 'formation')->get();
         $posts = Post::where('post_type', "=", 'formation')->get();
+        
         return view('front.formation', ['posts'=>$posts]);
         
     }
 
-    public function search(){
-        $q = Input::get('q');
-        if($q != ' '){
-            $posts = Post::where('title', 'LIKE', '%' . $q . '%')
-            ->orWhere('description', 'LIKE', '%' . $q . '%')
-            ->get();
+    public function search(Request $request){
 
-            if(count($posts) > 0){
-                return view('front.search')->withDetails($posts)->withQuery($q);
-            }
-        }
-        return view('front.search')->withMessage('Rien trouvé Antoine !');
+            $this->validate($request, [
+                'word' => 'string|required|max:200'
+            ]);
+            
+            $word = $request->word;
+            $posts = Post::where('title', 'like', "%$word%")
+                ->orWhere('description', 'like', "%$word%")
+                ->paginate(5);
+
+            $posts->appends(['word' => $word]);
+    
+            $message = (count($posts) > 0 )? 'Nous avons des résultats' : 'Nous avons rien trouvé, désolé';
+
+            return view('front.search', compact('posts'))->with($message);
+        
     }
 }
