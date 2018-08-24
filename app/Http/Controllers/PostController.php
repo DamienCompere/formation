@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
 
 class PostController extends Controller
 {
@@ -13,7 +14,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        return 'dashboard';
+        $posts = Post::paginate(10);
+
+        return view ('back.post.index', ['posts'=>$posts]); // Affiche tous les livres
     }
 
     /**
@@ -45,7 +48,9 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::find($id);
+
+        return view ('back.post.show', ['post'=>$post]);
     }
 
     /**

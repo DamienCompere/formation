@@ -16,4 +16,17 @@
       </li>
     </ul>
   </div>
+  @if(Auth::check())
+    <a href="{{ route('post.index') }}">Dashboard</a>
+    <a href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+    </a>
+
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
+    @else
+    @endif
 </nav>

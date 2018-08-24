@@ -24,4 +24,5 @@ Route::get('/search', 'FrontController@search')->name('search'); // page de rech
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+//Route pour le back
 Route::resource('admin/post', 'PostController')->middleware('auth');
