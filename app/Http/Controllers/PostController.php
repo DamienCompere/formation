@@ -75,9 +75,12 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
-    }
+    {   //On récupère les infos du poste
+        $post = Post::find($id);
+        //On récupère les catégories
+        $categories = Category::pluck('name', 'id');
+        return view ('back.post.edit', compact('post', 'categories'));
+    }   
 
     /**
      * Update the specified resource in storage.
@@ -88,7 +91,15 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //On récupère le post a modifier 
+        $post = Post::find($id);
+        $post->update($request->all()); //mettre à jour les données d'un post
+        $post->categories()->sync($request->categories); //synchronise les données avec la table de liaison
+
+        return redirect()->route('post.index')->with('message','sucess');
+
+
+
     }
 
     /**
@@ -99,6 +110,12 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //On récupère le post 
+        $post = Post::find($id);
+
+        //On supprime le post en question
+        $post->delete();
+
+        return redirect()->route('post.index')->with('message', 'sucess');
     }
 }

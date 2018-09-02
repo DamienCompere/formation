@@ -47,8 +47,14 @@
             <td>{{ $post->nb_max }}</td>
             <td>{{ $post->status }}</td>
             <td><a href="{{route('post.show',$post->id)}}">Voir</a></td>  
-            <td><a href="#">Editer</a></td>       
-            <td><a href="#">Supprimer</a></td>            
+            <td><a href="{{route('post.edit',$post->id)}}">Editer</a></td>       
+            <td>
+                <form class="delete" action="{{route('post.destroy', $post->id)}}" method="POST">
+                    @csrf 
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>            
         </tr>
     @empty
     <tr>
@@ -61,6 +67,10 @@
     </tfoot>
 
 </table>
+@section('scripts')
+    @parent
+    <script src="{{asset('js/confirm.js')}}"></script>
+@endsection
 
 
 @endsection
