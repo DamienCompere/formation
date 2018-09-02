@@ -3,4 +3,4 @@
       <input type="text" placeholder="rechercher.." name="word">
       <button type="submit">Va chercher !</button>
     </form>
-  </div> 
+</div> 

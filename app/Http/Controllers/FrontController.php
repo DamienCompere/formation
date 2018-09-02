@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
-use Illuminate\Support\Facades\Input;
+// use Illuminate\Support\Facades\Input;
 
 class FrontController extends Controller
 {

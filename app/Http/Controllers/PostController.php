@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Category;
 
 class PostController extends Controller
 {
@@ -26,7 +27,11 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        //formulaire de creation 
+        $categories = Category::pluck('name', 'id')->all();
+
+        return view ('back.post.create', ['categories' => $categories]);
+
     }
 
     /**
@@ -37,7 +42,17 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Validation des champs dans le formulaire
+       
+        $this->validate($request,[
+            'title'=>'required',
+            'description'=>'required'
+        ]);
+
+        $post = Post::create($request->all());
+
+        $post->categories()->attach($request->categories);
+        return redirect()->route('post.index')->with('message', 'sucess');;
     }
 
     /**

@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    protected $fillable = [
+        'post_type','title', 'description', 'start_date', 'end_date','price','nb_max','status'
+    ];
     public function picture(){
         return $this->hasOne(Picture::class);
     }

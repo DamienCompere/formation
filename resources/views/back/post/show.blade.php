@@ -21,6 +21,4 @@
 @if($post->picture)
     <img src="{{ url('images', $post->picture->link) }}" alt=""></li>
 @endif
-
-
 @endsection

@@ -3,6 +3,11 @@
 
 {{$posts->links()}}
 
+<a href="{{route('post.create')}}"><button type="button" class="btn btn-primary">Ajouter une formation</button></a>
+
+ @include('back.post.partials.flash')
+
+
 <table class="table">
     <thead>
         <tr>
