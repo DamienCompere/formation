@@ -9,8 +9,10 @@
             @empty
             <h2>Pas de catégorie</h2>
         @endforelse
-        <img src="{{ url('images', $post->picture->link) }}" alt="">
         <p>Titre : {{$post->title}}</p>
+        @if($post->picture)
+            <img src="{{ url('images', $post->picture->link) }}" alt=""></li>
+        @endif
         <p>Description : {{$post->description}}</p>
         <p>Date de début : {{$post->start_date}}</p>
         <p>Date de fin : {{$post->end_date}}</p>
@@ -21,6 +23,4 @@
     @endforelse
 
 </div>
-
-
 @endsection

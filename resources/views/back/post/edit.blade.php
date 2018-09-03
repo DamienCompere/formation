@@ -12,7 +12,7 @@
         <select class="form-control" id="post_type" name="post_type">
             <option value="formation" >Formation </option>
             <option value="stage" >Stage</option>
-            <option value="undertermined" >Undertermined</option>
+            <option value="undertermined" >Undertermined</option>©
         </select>
     </div>
 

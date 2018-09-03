@@ -51,6 +51,20 @@ class PostController extends Controller
 
         $post = Post::create($request->all());
 
+        //gestion de l'image 
+        $im = $request->file('picture');
+
+        if(!empty($im)){
+            //methode store retourne une link hash securisé
+            $link = $request->file('picture')->store('images');
+
+            //mettre à jour la table picture 
+            $post->picture()->create([
+                'link'=> $link,
+                'title'=>$request->title_image ?? $request->title
+            ]);
+        }
+        // Attache les catégories avec les posts
         $post->categories()->attach($request->categories);
         return redirect()->route('post.index')->with('message', 'sucess');;
     }
@@ -96,10 +110,12 @@ class PostController extends Controller
         $post->update($request->all()); //mettre à jour les données d'un post
         $post->categories()->sync($request->categories); //synchronise les données avec la table de liaison
 
+        if(is_null($post->picture) != null ){
+            Storage::disk('local')->delete($post->picture->link); // supprimer physiquement l'image
+            $post->picture()->delete(); // supprimer l'information en base de données
+        }
+
         return redirect()->route('post.index')->with('message','sucess');
-
-
-
     }
 
     /**
