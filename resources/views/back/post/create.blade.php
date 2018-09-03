@@ -6,12 +6,13 @@
 <form action="{{route('post.store')}}" method="POST" enctype="multipart/form-data">
     {{csrf_field()}}
 
-    <div class="form-group">
+     <div class="form-group">
         <label for="post_type">Formation :</label>
         <select class="form-control" id="post_type" name="post_type">
-            <option value="formation" >Formation </option>
-            <option value="stage" >Stage</option>
-            <option value="undertermined" >Undertermined</option>
+           @forelse($posts as $id => $post_type )
+                <option  {{ old('post_type') == $id ? 'selected' : ''}} value="{{ $id }}">{{$post_type}}</option>
+           @empty
+           @endforelse
         </select>
     </div>
 

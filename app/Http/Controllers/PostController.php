@@ -29,8 +29,9 @@ class PostController extends Controller
     {
         //formulaire de creation 
         $categories = Category::pluck('name', 'id')->all();
+        $posts = Post::groupBy('post_type')->pluck('post_type');
 
-        return view ('back.post.create', ['categories' => $categories]);
+        return view ('back.post.create', compact('categories', 'posts'));
 
     }
 
@@ -93,7 +94,10 @@ class PostController extends Controller
         $post = Post::find($id);
         //On récupère les catégories
         $categories = Category::pluck('name', 'id');
-        return view ('back.post.edit', compact('post', 'categories'));
+        //on récupère les post_type
+        $posts = Post::groupBy('post_type')->pluck('post_type');
+
+        return view ('back.post.edit', compact('post', 'categories', 'posts'));
     }   
 
     /**
