@@ -23,6 +23,8 @@ Route::get('/formation', 'FrontController@showFormation')->name('formation');
 Route::get('/search', 'FrontController@search')->name('search'); // page de recherche
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/contact', 'FrontController@contact')->name('contact'); // Page de contact
+Route::post('/contact', 'FrontController@mailer')->name('contact.mailer'); //Envoie de l'email
 
 //Route pour le back
 Route::resource('admin/post', 'PostController')->middleware('auth');

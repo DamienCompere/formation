@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 // use Illuminate\Support\Facades\Input;
+use Mail;
 
 class FrontController extends Controller
 {
@@ -59,5 +60,28 @@ class FrontController extends Controller
 
             return view('front.search', compact('posts'))->with($message);
         
+    }
+
+    public function contact(){
+
+        return view ('front.contact');
+    }
+
+    public function mailer(Request $request){
+
+        $this->validate($request, [
+            'email' => 'required|email',
+            'message'=>'required'
+        ]);
+
+        Mail::send('emails.contact-message',[
+            'msg' => $request->message
+        ], function($mail) use($request){
+            $mail->from($request->email);
+
+            $mail->to('compere01@gmail.com')->subject('Contact message');
+        });
+
+        return redirect()->back();
     }
 }
