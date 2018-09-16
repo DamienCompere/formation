@@ -17,16 +17,22 @@
     </ul>
   </div>
   @if(Auth::check())
-    <a href="{{ route('post.index') }}">Dashboard</a>
-    <a href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-    </a>
+  <div class="collapse navbar-collapse right-space" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"> <a href="{{ route('post.index') }}" class="nav-link">Dashboard</a></li>
+        <li class="nav-item"> <a class="nav-link href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                      document.getElementById('logout-form').submit();">
+                                          {{ __('Logout') }}
+      </a></li>
+      </ul>
+    
+    
 
-    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-        @csrf
-    </form>
+      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+          @csrf
+      </form>
+  </div>
     @else
     @endif
 </nav>

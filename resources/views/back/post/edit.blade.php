@@ -35,12 +35,12 @@
     
     <div class="form-group">
         <label for="start_date">Start Date</label>
-        <input type="date" class="form-control" id="start_date" name="start_date" value="{{$post->start_date}}">
+        <input type="text" class="form-control" id="start_date" name="start_date" value="{{ \Carbon\Carbon::parse($post->start_date)->format('d/m/Y') }}">
     </div>
 
     <div class="form-group">
         <label for="end_date">End Date</label>
-        <input type="date" class="form-control" id="end_date" name="end_date" value="{{$post->end_date}}">
+        <input type="text" class="form-control" id="end_date" name="end_date" value="{{ \Carbon\Carbon::parse($post->end_date)->format('d/m/Y') }}">
     </div>
 
     <div class="checkbox">

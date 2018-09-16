@@ -8,17 +8,21 @@
     {{ $category->name }}
 @empty
 @endforelse
-<p> {{ $post->start_date }} </p>
-<p> {{ $post->end_date }} </p>
-<p> {{ $post->price }} $</p>
-<p> {{ $post->nb_max }} </p>
-<p> {{ $post->status }} </p>
-
-<p> {{ $post->description }} </p>
 
 
-<p>Image: </p>
-@if($post->picture)
-    <img src="{{ url('images', $post->picture->link) }}" alt=""></li>
-@endif
+
+<div class="content">
+    @if($post->picture)
+        <img src="{{ url('images', $post->picture->link) }}" alt=""></li>
+    @endif
+
+    <p> {{ $post->description }} </p>
+</div>
+<div class="content">
+    <p>Date de début : {{ \Carbon\Carbon::parse($post->start_date)->format('d/m/Y') }} </p>
+    <p>Date de fin :  {{ \Carbon\Carbon::parse($post->end_date)->format('d/m/Y') }} </p>
+    <p> Prix : {{ $post->price }} $</p>
+    <p>Nombre max :  {{ $post->nb_max }} </p>
+    <p>Statut :  {{ $post->status }} </p>
+</div>
 @endsection

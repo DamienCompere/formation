@@ -8,34 +8,19 @@
         @empty
         <h2>Pas de catégorie</h2>
     @endforelse
-    <div>
+    <div class="content">
         <img src="{{ url('images', $post->picture->link) }}" alt="">
-    </div>
-
-    <div>
-        <p>Type : {{$post->post_type}}</p>
-    </div>
-   
-    <div>
-        <p>Date de début : {{$post->start_date}}</p>
-    </div>
-
-    <div>
-        <p>Date de fin : {{$post->end_date}}</p>
-    </div>
-
-    <div>
-        <p>Prix : {{$post->price}}€</p>
-    </div>
-
-     <div>
-        <p>Nombre d'étudiant max : {{$post->nb_max}}</p>
-    </div>
-
-    <div>
         <p>Description : {{$post->description}}</p>
     </div>
-</div>
 
+    <div class="content">
+        <p>Type : {{$post->post_type}}</p>
+        <p>Date de début : {{ \Carbon\Carbon::parse($post->start_date)->format('d/m/Y') }}</p>
+        <p>Date de fin : {{ \Carbon\Carbon::parse($post->end_date)->format('d/m/Y') }}</p>
+        <p>Prix : {{$post->price}}$</p>
+        <p>Nombre d'étudiant max : {{$post->nb_max}}</p>
+    </div>
+ 
+</div>
 
 @endsection
