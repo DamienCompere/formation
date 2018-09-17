@@ -52,7 +52,9 @@ class FrontController extends Controller
             $word = $request->word;
             $posts = Post::where('title', 'like', "%" . $word . "%")
                 ->orWhere('description', 'like', "%$word%")
-                ->orWhere('categories', 'like', "%$word%")
+                ->orWhereHas('categories', function($q) use ($word) { 
+                    $q->where('name', 'like', "%$word%");
+                })
                 ->paginate(5);
 
             $posts->appends(['word' => $word]);
