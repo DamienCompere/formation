@@ -4,11 +4,7 @@
 <div class="container">
     <h1>Stage</h1>
     @forelse ($posts as $post)
-        @forelse($post->categories as $category)
-            <h2>{{$category->name}}</h2>
-            @empty
-            <h2>Pas de catégorie</h2>
-        @endforelse
+       
         <p>Titre : {{$post->title}}</p>
         <div class="content">
             @if($post->picture)
@@ -22,6 +18,14 @@
             <p>Prix : {{$post->price}}$</p>
             <p>Nombre max d'étudiant : {{$post->nb_max}}</p>
         </div>
+        <p>Catégorie :</p>
+        @forelse($post->categories as $category)
+            <ul>
+                <li>{{$category->name}}</li>
+            </ul>
+            @empty
+            <h2>Pas de catégorie</h2>
+        @endforelse
         <hr class="article">
             @empty
             <p>Pas de proposition de stage</p>

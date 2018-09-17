@@ -45,16 +45,10 @@
 
     <div class="checkbox">
         <p>Categories</p>
-        @forelse($categories as $id => $name)
-            @php
-                $isChecked = ($id == $name) ? 'checked' : '' ;
-                if($isChecked){
-                    break;
-                }
-            @endphp
-            <label><input {{$isChecked ?? ''}} type="checkbox" value="{{$id}}" name="categories[]" id="category{{$id}}">{{$name}}</label>
-        @empty
-        @endforelse
+            @forelse($categories as $id => $name)
+                <label><input {{in_array($id, $post->categories()->pluck('id')->toArray()) ? 'checked' : ""}} type="checkbox" value="{{$id}}" name="categories[]" id="category{{$id}}">{{$name}}</label>
+            @empty
+            @endforelse
     </div>
     <div class="form-group">
         <label for="price">Price</label>
