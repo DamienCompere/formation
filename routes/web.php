@@ -20,7 +20,8 @@ Auth::routes();
 Route::get('/stage', 'FrontController@showStage')->name('stage');
 Route::get('/formation', 'FrontController@showFormation')->name('formation');
 
-Route::get('/search', 'FrontController@search')->name('search'); // page de recherche
+Route::get('/search', 'FrontController@search')->name('search'); // page de recherche front
+Route::get('/searchback', 'PostController@searchback')->name('searchback'); // Page de recherche pour le back
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/contact', 'FrontController@contact')->name('contact'); // Page de contact

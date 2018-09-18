@@ -3,11 +3,7 @@
 
 <div class="container">
     <h1>{{$post->title}}</h1>
-    @forelse($post->categories as $category)
-        <h2>{{$category->name}}</h2>
-        @empty
-        <h2>Pas de catégorie</h2>
-    @endforelse
+    
     <div class="content">
         <img src="{{ url('images', $post->picture->link) }}" alt="">
         <p>Description : {{$post->description}}</p>
@@ -20,7 +16,13 @@
         <p>Prix : {{$post->price}}$</p>
         <p>Nombre d'étudiant max : {{$post->nb_max}}</p>
     </div>
- 
+    <p>Catgéories</p>
+@forelse($post->categories as $category)
+    <ul>
+        <li>{{ $category->name }}</li>
+    </ul>
+@empty
+@endforelse
 </div>
 
 @endsection

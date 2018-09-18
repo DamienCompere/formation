@@ -14,10 +14,9 @@ class FrontController extends Controller
     public function index(){
         
         $posts = Post::published()->limit(2)->get();
-        // $posts = Post::orderBy( 'start_date','DESC')->paginate(2)->get();
-        // $posts = DB::table('posts')->orderBy('start_date','desc')->paginate(2)->get();
 
         return view('front.index', ['posts'=>$posts]);
+
     }
 
     public function show(int $id){
@@ -29,7 +28,7 @@ class FrontController extends Controller
 
     public function showStage(){
         // On récupère les posts avec le champs stage
-        $posts= Post::where('post_type', '=', 'stage')->get();
+        $posts= Post::where('post_type', '=', 'stage')->where('status', '=', 'published')->get();
         // $posts = DB::table('posts')->where('post_type', 'stage')->get();
 
         return view('front.stage', ['posts'=>$posts]);
@@ -37,7 +36,7 @@ class FrontController extends Controller
 
     public function showFormation(){
         // $posts = DB::table('posts')->where('post_type', 'formation')->get();
-        $posts = Post::where('post_type', "=", 'formation')->get();
+        $posts = Post::where('post_type', "=", 'formation')->where('status', '=', 'published')->get();
         
         return view('front.formation', ['posts'=>$posts]);
         
@@ -50,11 +49,11 @@ class FrontController extends Controller
             ]);
             
             $word = $request->word;
-            $posts = Post::where('title', 'like', "%" . $word . "%")
-                ->orWhere('description', 'like', "%$word%")
+            $posts = Post::where('title', 'like', "%$word%")->where('status', '=', 'published')
+                ->orWhere('description', 'like', "%$word%")->where('status', '=', 'published')
                 ->orWhereHas('categories', function($q) use ($word) { 
                     $q->where('name', 'like', "%$word%");
-                })
+                })->where('status', '=', 'published')
                 ->paginate(5);
 
             $posts->appends(['word' => $word]);

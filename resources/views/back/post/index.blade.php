@@ -2,7 +2,9 @@
 @section('content')
 
 {{$posts->links()}}
-
+<div class="searchbar">
+        @include('back.post.partials.searchBarBack')
+</div>
 <a href="{{route('post.create')}}"><button type="button" class="btn btn-primary">Ajouter une formation</button></a>
 
  @include('back.post.partials.flash')
@@ -41,7 +43,7 @@
                     pas de catégorie
                 @endforelse
             </td>
-            <td>{{ \Carbon\Carbon::parse($post->start_date)->format('d/m/Y') }}</td>
+            <td>{{ \Carbon\Carbon::parse($post->start_date)->format('d/m/Y')  }}</td>
             <td>{{ \Carbon\Carbon::parse($post->end_date)->format('d/m/Y') }}</td>
             <td>{{$post->price}}$</td>
             <td>{{ $post->nb_max }}</td>

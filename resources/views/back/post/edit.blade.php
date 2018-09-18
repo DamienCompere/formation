@@ -35,12 +35,12 @@
     
     <div class="form-group">
         <label for="start_date">Start Date</label>
-        <input type="text" class="form-control" id="start_date" name="start_date" value="{{ \Carbon\Carbon::parse($post->start_date)->format('d/m/Y') }}">
+        <input type="date" class="form-control" id="start_date" name="start_date" value="{{ \Carbon\Carbon::parse($post->start_date)->format('Y-m-d') }}">
     </div>
 
     <div class="form-group">
         <label for="end_date">End Date</label>
-        <input type="text" class="form-control" id="end_date" name="end_date" value="{{ \Carbon\Carbon::parse($post->end_date)->format('d/m/Y') }}">
+        <input type="date" class="form-control" id="end_date" name="end_date" value="{{ \Carbon\Carbon::parse($post->end_date)->format('Y-m-d') }}">
     </div>
 
     <div class="checkbox">
@@ -65,7 +65,7 @@
     <label class="radio-inline"><input type="radio" name="status" value="unpublished" {{ $post->status == 'unpublished' ? 'checked' : '' }}>Unpublished</label>
 
     <br> 
-
+    <img src="{{$post->link}}" alt="">
     <p>File</p>
     <input type="file" id="picture" name="picture" accept=""> 
     <br>

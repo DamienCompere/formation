@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -111,13 +112,29 @@ class PostController extends Controller
     {
         //On récupère le post a modifier 
         $post = Post::find($id);
-        $post->update($request->all()); //mettre à jour les données d'un post
-        $post->categories()->sync($request->categories); //synchronise les données avec la table de liaison
+       
+        $new_pic = $request->file('picture');
 
-        if(is_null($post->picture) != null ){
+        if($new_pic != null ){
+            $link = $request->picture->store('');
+
+            if($post->picture()->exists()):
             Storage::disk('local')->delete($post->picture->link); // supprimer physiquement l'image
-            $post->picture()->delete(); // supprimer l'information en base de données
+
+            //mettre à jour la table picture 
+            $post->picture()->update([
+                'link'=> $link,
+            ]);
+            else:
+                $post->picture()->create([
+                    'link'=> $link,
+                ]);
+            endif;
         }
+
+        $post->update($request->except('picture')); //mettre à jour les données d'un post
+        $post->categories()->sync($request->categories); //synchronise les données avec la table de liaison
+        $post->save();
 
         return redirect()->route('post.index')->with('message','sucess');
     }
@@ -138,4 +155,27 @@ class PostController extends Controller
 
         return redirect()->route('post.index')->with('message', 'sucess');
     }
+
+    public function searchback(Request $request){
+
+        $this->validate($request, [
+            'word' => 'string|required|max:200'
+        ]);
+        
+        $word = $request->word;
+        $posts = Post::where('title', 'like', "%$word%")
+            ->orWhere('description', 'like', "%$word%")
+            ->orWhereHas('categories', function($q) use ($word) { 
+                $q->where('name', 'like', "%$word%");
+            })
+            ->paginate(5);
+
+        $posts->appends(['word' => $word]);
+
+        $message = (count($posts) > 0 )? 'Nous avons des résultats' : 'Nous avons rien trouvé, désolé';
+
+        return view('back.post.searchback', compact('posts'))->with($message);
+    
+    }
+    
 }

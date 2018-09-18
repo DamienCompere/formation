@@ -3,8 +3,12 @@
 @section('content')
 
 <!-- barre de recherche -->
-<div class="home">
+<div class="searchbar">
+        @include('partials.searchBar')
+</div>
 
+<div class="home">
+    
     <h1>Formations / Stages </h1>
 
     <ul class="list-group">
@@ -17,8 +21,8 @@
             </li>
         @endif
         <li class="list-group-item">{{$post->description}}</li>
-        <li class="list-group-item">Date de début : {{ \Carbon\Carbon::parse($post->start_date)->format('d/m/Y') }}</li>
-        <li class="list-group-item">Date de fin : {{ \Carbon\Carbon::parse($post->end_date)->format('d/m/Y') }}</li>
+        <li class="list-group-item">Date de début : {{ ($post->start_date)->format('d/m/Y') }}</li>
+        <li class="list-group-item">Date de fin : {{ ($post->end_date)->format('d/m/Y') }}</li>
         <br>
         <hr class="article">
         @empty 

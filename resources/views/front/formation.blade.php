@@ -12,8 +12,8 @@
             <p>Description : {{$post->description}}</p>
         </div>
         <div class="content">
-            <p>Date de début : {{ \Carbon\Carbon::parse($post->start_date)->format('d/m/Y') }}</p>
-            <p>Date de fin : {{ \Carbon\Carbon::parse($post->end_date)->format('d/m/Y') }}</p>
+            <p>Date de début : {{ ($post->start_date)->format('d/m/Y') }}</p>
+            <p>Date de fin : {{ ($post->end_date)->format('d/m/Y') }}</p>
             <p>Prix : {{$post->price}}$</p>
             <p>Nombre max d'étudiant : {{$post->nb_max}}</p>
         </div>     

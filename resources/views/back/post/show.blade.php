@@ -4,13 +4,6 @@
 
 <h1>{{ $post->post_type }} : {{ $post->title }} </h1>
 
-@forelse($post->categories as $category)
-    {{ $category->name }}
-@empty
-@endforelse
-
-
-
 <div class="content">
     @if($post->picture)
         <img src="{{ url('images', $post->picture->link) }}" alt=""></li>
@@ -25,4 +18,14 @@
     <p>Nombre max :  {{ $post->nb_max }} </p>
     <p>Statut :  {{ $post->status }} </p>
 </div>
+<p>Catgéories</p>
+@forelse($post->categories as $category)
+    <ul>
+        <li>{{ $category->name }}</li>
+    </ul>
+@empty
+@endforelse
+
+
+
 @endsection

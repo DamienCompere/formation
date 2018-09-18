@@ -15,7 +15,7 @@
             <div class="col-md-12">
             @include('partials.menu')
             </div>
-            @include('partials.searchBar')
+            
         </div>
         <div class="row">
             <div class="col-sm-12">

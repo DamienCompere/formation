@@ -8,9 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    protected $dates = ['start_date', 'end_date'];
+
     protected $fillable = [
         'post_type','title', 'description', 'start_date', 'end_date','price','nb_max','status'
     ];
+
+
     public function picture(){
         return $this->hasOne(Picture::class);
     }
@@ -24,4 +28,8 @@ class Post extends Model
 
         return $query->where('start_date', '>', $now);
     }
+
+
+
+
 }
