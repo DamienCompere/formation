@@ -6,28 +6,30 @@
 <div class="searchbar">
         @include('partials.searchBar')
 </div>
-
-<div class="home">
-    
-    <h1>Formations / Stages </h1>
-
-    <ul class="list-group">
+<h1>Formations / Stages </h1>
+<!-- Affichage des deux derniers posts  -->
+<div class="card border-primary mb-3" style="width: 38rem;">
     @forelse ($posts as $post)
-        <li class="list-group-item"><h2><a href="{{ url('post', $post->id) }}">{{$post->title}}</a></h2></li>
-        
         @if($post->picture)
-            <li>
-                <img src="{{ url('images', $post->picture->link) }}" alt="">
-            </li>
+            <img class="card-img-top img-thumbnail" src="{{ url('images', $post->picture->link) }}" alt="Card image cap">
         @endif
-        <li class="list-group-item">{{$post->description}}</li>
-        <li class="list-group-item">Date de début : {{ ($post->start_date)->format('d/m/Y') }}</li>
-        <li class="list-group-item">Date de fin : {{ ($post->end_date)->format('d/m/Y') }}</li>
-        <br>
-        <hr class="article">
-        @empty 
-        <li>Pas de formations / Stages pour le moment</li>
+        <div class="card-body">
+            <h5 class="card-title">{{$post->description}}</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Date de début : {{ ($post->start_date)->format('d/m/Y') }}</li>
+            <li class="list-group-item">Date de fin : {{ ($post->end_date)->format('d/m/Y') }}</li>
+        </ul>
+        <div class="card-body">
+            <a href="{{ url('post', $post->id) }}" class="card-link btn btn-info">Afficher le poste complet </a>
+        </div>
+        @empty
     @endforelse
-    </ul>
 </div>
+
+
+
+
+
+
 @endsection

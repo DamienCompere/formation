@@ -20,7 +20,7 @@
             @endif
         </div>
 
-        <button class="btn btn-primary">Send</button>
+        <button class="btn btn-info">Envoyer</button>
 
     </form>
 </div>

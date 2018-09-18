@@ -15,7 +15,6 @@
         <tr>
             <th>Title</th>
             <th>Type</th>
-            <th>Description</th>
             <th>Categorie</th>
             <th>Date de début</th>
             <th>Date de fin</th>
@@ -33,7 +32,6 @@
         <tr>
             <td>{{ $post->title }}</td>
             <td>{{ $post->post_type }}</td>
-            <td>{{ $post->description }}</td>
             <td>
                 @forelse($post->categories as $category)
                     <ul>
@@ -48,8 +46,8 @@
             <td>{{$post->price}}$</td>
             <td>{{ $post->nb_max }}</td>
             <td>{{ $post->status }}</td>
-            <td><a href="{{route('post.show',$post->id)}}">Voir</a></td>  
-            <td><a href="{{route('post.edit',$post->id)}}">Editer</a></td>       
+            <td><a href="{{route('post.show',$post->id)}}" class="btn btn-info">Voir</a></td>  
+            <td><a href="{{route('post.edit',$post->id)}}" class="btn btn-dark">Editer</a></td>       
             <td>
                 <form class="delete" action="{{route('post.destroy', $post->id)}}" method="POST">
                     @csrf 

@@ -23,7 +23,7 @@
         <tr>
             <td>{{ $post->title }}</td>
             <td>{{ $post->description }}</td>
-            <td><a href="{{route('post.show',$post->id)}}">Voir</a></td>            
+            <td><a href="{{route('post.show',$post->id)}}" class="btn btn-info">Voir</a></td>            
         </tr>
     @empty
     <tr>

@@ -69,7 +69,7 @@
     <p>File</p>
     <input type="file" id="picture" name="picture" accept=""> 
     <br>
-  <button type="submit" class="btn btn-warning">Modify</button>
+  <button type="submit" class="btn btn-dark">Modifier</button>
 
 </form>
 
