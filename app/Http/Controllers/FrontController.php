@@ -77,13 +77,14 @@ class FrontController extends Controller
         ]);
 
         Mail::send('emails.contact-message',[
-            'msg' => $request->message
+            'msg' => $request->message,
+            'email_adress'=>$request->email
         ], function($mail) use($request){
             $mail->from($request->email);
 
-            $mail->to('compere01@gmail.com')->subject('Contact message');
+            $mail->to('compere@contact.com')->subject('Contact message');
         });
 
-        return redirect()->back();
+        return redirect()->back()->with('message', 'sucess');
     }
 }

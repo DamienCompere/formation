@@ -3,11 +3,12 @@
 
 <div class="container">
     <h1>Contact</h1>
+    @include('back.post.partials.flash')
     <form method="post" action="{{ route('contact.mailer') }}">
     {{csrf_field()}}
         <div class="form-group">
-            <label>Email Adress</label>
-            <input type="text" class="form-control" name="email">
+            <label>Email </label>
+            <input type="text" class="form-control" name="email" id="email">
             @if($errors->has('email'))
                 <span class="error">{{$errors->first('email')}}</span>
             @endif

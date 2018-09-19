@@ -73,7 +73,7 @@ class PostController extends Controller
         }
         // Attache les catégories avec les posts
         $post->categories()->attach($request->categories);
-        return redirect()->route('post.index')->with('message', 'sucess');;
+        return redirect()->route('post.index')->with('message', 'sucess');
     }
 
     /**
