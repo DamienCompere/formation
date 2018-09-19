@@ -18,7 +18,7 @@ class PostController extends Controller
     {
         $posts = Post::paginate(10);
 
-        return view ('back.post.index', ['posts'=>$posts]); // Affiche tous les livres
+        return view ('back.post.index', ['posts'=>$posts]); // Affiche tous les formations
     }
 
     /**

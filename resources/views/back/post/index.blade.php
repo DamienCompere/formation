@@ -41,8 +41,8 @@
                     pas de catégorie
                 @endforelse
             </td>
-            <td>{{ \Carbon\Carbon::parse($post->start_date)->format('d/m/Y')  }}</td>
-            <td>{{ \Carbon\Carbon::parse($post->end_date)->format('d/m/Y') }}</td>
+            <td>{{ $post->start_date->format('d/m/Y')  }}</td>
+            <td>{{ $post->end_date->format('d/m/Y') }}</td>
             <td>{{$post->price}}$</td>
             <td>{{ $post->nb_max }}</td>
             <td>{{ $post->status }}</td>

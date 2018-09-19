@@ -11,7 +11,7 @@
         <label for="post_type">Formation :</label>
         <select class="form-control" id="post_type" name="post_type">
            @forelse($posts as $id => $post_type )
-                <option {{ ('post_type') == $id ? 'selected' : ''}} value="{{ $id }}">{{$post_type}}</option>
+                <option {{ !is_null('$post_type') == $id ? 'selected' : ''}} value="{{ $id }}">{{$post_type}}</option>
            @empty
            @endforelse
         </select>
@@ -35,12 +35,12 @@
     
     <div class="form-group">
         <label for="start_date">Start Date</label>
-        <input type="date" class="form-control" id="start_date" name="start_date" value="{{ \Carbon\Carbon::parse($post->start_date)->format('Y-m-d') }}">
+        <input type="date" class="form-control" id="start_date" name="start_date" value="{{$post->start_date->format('Y-m-d') }}">
     </div>
 
     <div class="form-group">
         <label for="end_date">End Date</label>
-        <input type="date" class="form-control" id="end_date" name="end_date" value="{{ \Carbon\Carbon::parse($post->end_date)->format('Y-m-d') }}">
+        <input type="date" class="form-control" id="end_date" name="end_date" value="{{ $post->end_date->format('Y-m-d') }}">
     </div>
 
     <div class="checkbox">

@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    protected $dates = ['start_date', 'end_date'];
+    protected $casts = [
+        'start_date' => 'datetime',
+        'end_date' => 'datetime',
+    ];
 
     protected $fillable = [
         'post_type','title', 'description', 'start_date', 'end_date','price','nb_max','status'
