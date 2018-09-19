@@ -20,15 +20,12 @@
   <div class="">
       <ul class="navbar-nav">
         <li class="nav-item"> <a href="{{ route('post.index') }}" class="nav-link">Dashboard</a></li>
-        <li class="nav-item"> <a class="nav-link href="{{ route('logout') }}"
+        <li class="nav-item"> <a class="nav-link" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                       document.getElementById('logout-form').submit();">
                                           {{ __('Logout') }}
       </a></li>
       </ul>
-    
-    
-
       <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
           @csrf
       </form>
