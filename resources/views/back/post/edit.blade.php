@@ -10,10 +10,9 @@
      <div class="form-group">
         <label for="post_type">Formation :</label>
         <select class="form-control" id="post_type" name="post_type">
-           @forelse($posts as $id => $post_type )
-                <option {{ !is_null('$post_type') == $id ? 'selected' : ''}} value="{{ $id }}">{{$post_type}}</option>
-           @empty
-           @endforelse
+           <option value="stage" {{ $post->post_type === "stage" ? 'selected' :''}}>Stage</option>
+           <option value="formation" {{ $post->post_type === "formation" ? 'selected' :''}}>Formation</option>
+           <option value="undetermined" {{ $post->post_type === "undetermined" ? 'selected' :''}}>undetermined</option>
         </select>
     </div>
 
@@ -61,7 +60,7 @@
     </div>
 
     <p>Status</p>
-    <label class="radio-inline"><input type="radio" name="status" value="published" {{ $post->status == 'published' ? 'checked' : '' }}>Published</label>
+    <label class="radio-inline"><input type="radio" name="status" value="published"{{$post->status == 'published' ? 'checked' : '' }}>Published</label>
     <label class="radio-inline"><input type="radio" name="status" value="unpublished" {{ $post->status == 'unpublished' ? 'checked' : '' }}>Unpublished</label>
 
     <br> 
