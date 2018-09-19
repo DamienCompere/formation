@@ -17,7 +17,7 @@
     </div>
 
     <div class="form-group">
-        <label for="title">Title:</label>
+        <label for="title">Titre</label>
         <input type="text" class="form-control" id="title" name="title" value="{{old('title')}}">
         @if($errors->has('title'))
             <span class="error">{{$errors->first('title')}}</span>
@@ -33,13 +33,19 @@
     </div>
     
     <div class="form-group">
-        <label for="start_date">Start Date</label>
+        <label for="start_date">Date de début</label>
         <input type="date" class="form-control" id="start_date" name="start_date" value="{{old('start_date')}}">
+        @if($errors->has('start_date'))
+            <span class="error">{{$errors->first('start_date')}}</span>
+        @endif
     </div>
 
     <div class="form-group">
-        <label for="end_date">End Date</label>
+        <label for="end_date">Date de fin</label>
         <input type="date" class="form-control" id="end_date" name="end_date" value="{{old('end_date')}}">
+        @if($errors->has('end_date'))
+            <span class="error">{{$errors->first('end_date')}}</span>
+        @endif
     </div>
 
     <div class="checkbox">
@@ -50,18 +56,28 @@
         @endforelse
     </div>
     <div class="form-group">
-        <label for="price">Price</label>
+        <label for="price">Prix</label>
         <input type="number" class="form-control" id="price" name="price" value="{{old('price')}}" min="1">
+        @if($errors->has('price'))
+            <span class="error">{{$errors->first('price')}}</span>
+        @endif
     </div>
 
     <div class="form-group">
-        <label for="nb_max">Max number </label>
+        <label for="nb_max">Nombre max </label>
         <input type="number" class="form-control" id="nb_max" name="nb_max" value="{{old('nb_max')}}" min="1" step="1">
+        @if($errors->has('nb_max'))
+            <span class="error">{{$errors->first('nb_max')}}</span>
+        @endif
     </div>
 
     <p>Status</p>
     <label class="radio-inline"><input type="radio" name="status" value="published" {{old('status') == "published" ? 'checked' : ''}}>Published</label>
     <label class="radio-inline"><input type="radio" name="status" value="unpublished" {{old('status') == "unpublished" ? 'checked' : ''}}>Unpublished</label>
+    <br>
+    @if($errors->has('status'))
+        <span class="error">{{$errors->first('status')}}</span>
+    @endif
 
     <br> 
 

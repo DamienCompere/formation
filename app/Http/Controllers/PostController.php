@@ -48,7 +48,12 @@ class PostController extends Controller
        
         $this->validate($request,[
             'title'=>'required',
-            'description'=>'required'
+            'description'=>'required', 
+            'start_date'=>'required', 
+            'end_date'=>'required',
+            'price'=>'required',
+            'nb_max'=>"required",
+            'status'=>'required'
         ]);
 
         $post = Post::create($request->all());
