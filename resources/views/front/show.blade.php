@@ -4,7 +4,9 @@
 <h1>Détail {{$post->title}}</h1>
 
 <div class="card border-primary mb-3" style="width: 38rem;">
+@if($post->picture)
   <img class="card-img-top img-thumbnail" src="{{ url('images', $post->picture->link) }}" alt="{{$post->picture->link}}">
+@endif
   <div class="card-body">
     <h5 class="card-title">{{$post->title}}</h5>
     <p class="card-text">{{$post->description}}</p>
@@ -26,7 +28,5 @@
     @endforelse
   </div>
 </div>
-
-
 
 @endsection

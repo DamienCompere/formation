@@ -21,12 +21,13 @@
     <li class="list-group-item">Nombre d'étudiant max : {{$post->nb_max}}</li>
   </ul>
   <div class="card-body">
-    <p>Catégorie :</p>
+  <p>Catégorie :</p>
     @forelse($post->categories as $category)
         <ul>
             <li>{{ $category->name }}</li>
         </ul>
     @empty
+    <p>Pas de catégorie</p>
     @endforelse
   </div>
 </div>

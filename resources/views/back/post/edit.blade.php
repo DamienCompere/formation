@@ -72,12 +72,13 @@
     <br> 
 
     <p>Image</p>
-    <img src="{{ url('images', $post->picture->link) }}" alt="$post->picture->link">
+    @if($post->picture)
+        <img src="{{ url('images', $post->picture->link) }}" alt="$post->picture->link">
+    @endif
     <input type="file" id="picture" name="picture" accept=""> 
     <br>
   <button type="submit" class="btn btn-dark">Modifier</button>
 
 </form>
-
 
 @endsection
