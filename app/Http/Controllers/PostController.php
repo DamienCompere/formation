@@ -50,7 +50,7 @@ class PostController extends Controller
             'title'=>'required',
             'description'=>'required', 
             'start_date'=>'required', 
-            'end_date'=>'required',
+            'end_date'=>'required |after:start_date',
             'price'=>'required',
             'nb_max'=>"required",
             'status'=>'required'
@@ -117,6 +117,16 @@ class PostController extends Controller
     {
         //On récupère le post a modifier 
         $post = Post::find($id);
+        
+        $this->validate($request,[
+            'title'=>'required',
+            'description'=>'required', 
+            'start_date'=>'required', 
+            'end_date'=>'required |after:start_date',
+            'price'=>'required',
+            'nb_max'=>"required",
+            'status'=>'required'
+        ]);
        
         $new_pic = $request->file('picture');
 

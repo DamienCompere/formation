@@ -35,11 +35,17 @@
     <div class="form-group">
         <label for="start_date">Start Date</label>
         <input type="date" class="form-control" id="start_date" name="start_date" value="{{$post->start_date->format('Y-m-d') }}">
+        @if($errors->has('start_date')) 
+            <span class="error">{{$errors->first('start_date')}}</span>
+        @endif
     </div>
 
     <div class="form-group">
         <label for="end_date">End Date</label>
         <input type="date" class="form-control" id="end_date" name="end_date" value="{{ $post->end_date->format('Y-m-d') }}">
+        @if($errors->has('end_date')) 
+            <span class="error">{{$errors->first('end_date')}}</span>
+        @endif
     </div>
 
     <div class="checkbox">
@@ -64,8 +70,9 @@
     <label class="radio-inline"><input type="radio" name="status" value="unpublished" {{ $post->status == 'unpublished' ? 'checked' : '' }}>Unpublished</label>
 
     <br> 
-    <img src="{{$post->link}}" alt="">
-    <p>File</p>
+
+    <p>Image</p>
+    <img src="{{ url('images', $post->picture->link) }}" alt="$post->picture->link">
     <input type="file" id="picture" name="picture" accept=""> 
     <br>
   <button type="submit" class="btn btn-dark">Modifier</button>
