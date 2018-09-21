@@ -25,6 +25,7 @@
             <li>{{ $category->name }}</li>
         </ul>
     @empty
+    <p>Pas de catégorie</p>
     @endforelse
   </div>
 </div>

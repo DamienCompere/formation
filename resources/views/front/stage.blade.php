@@ -24,6 +24,7 @@
                 @forelse($post->categories as $category)
                     <li class="list-group-item">{{ $category->name }} </li>
                 @empty
+                <li class="list-group-item">Pas de catégorie pour ce stage</li>
                 @endforelse
                 <li class="list-group-item"><a href="{{ url('post', $post->id) }}" class="card-link btn btn-info">Afficher le poste complet </a>
     </li>

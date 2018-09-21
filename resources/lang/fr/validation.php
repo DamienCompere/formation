@@ -93,7 +93,7 @@ return [
     'numeric'              => 'le :attribute doit etre un chiffre.',
     'present'              => 'le :attribute champs doit etre present',
     'regex'                => 'le :attribute format n est pas valide.',
-    'required'             => 'le :attribute champs est requis.',
+    'required'             => 'le champs :attribute est requis.',
     'required_if'          => 'le :attribute champs est requis quand :other est :value.',
     'required_unless'      => 'le :attribute champs est requis tant que :other est dans :values.',
     'required_with'        => 'le :attribute champs est requis quand :values est present.',
