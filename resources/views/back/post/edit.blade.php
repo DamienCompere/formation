@@ -77,7 +77,7 @@
     @endif
     <input type="file" id="picture" name="picture" accept=""> 
     <br>
-  <button type="submit" class="btn btn-dark">Modifier</button>
+  <button type="submit" class="btn btn-dark btn-lg">Modifier</button>
 
 </form>
 

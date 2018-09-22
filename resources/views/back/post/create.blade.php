@@ -84,7 +84,7 @@
     <p>File</p>
     <input type="file" id="picture" name="picture" accept=""> 
     <br>
-  <button type="submit" class="btn btn-default">Submit</button>
+  <button type="submit" class="btn btn-primary btn-lg">Envoyer</button>
 
 </form>
 

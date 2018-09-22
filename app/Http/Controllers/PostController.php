@@ -48,11 +48,11 @@ class PostController extends Controller
        
         $this->validate($request,[
             'title'=>'required',
-            'description'=>'required', 
+            'description'=>'required|max:500', 
             'start_date'=>'required', 
             'end_date'=>'required |after:start_date',
-            'price'=>'required',
-            'nb_max'=>"required",
+            'price'=>'required | integer',
+            'nb_max'=>"required | integer ",
             'status'=>'required'
         ]);
 
@@ -73,7 +73,7 @@ class PostController extends Controller
         }
         // Attache les catégories avec les posts
         $post->categories()->attach($request->categories);
-        return redirect()->route('post.index')->with('message', 'sucess');
+        return redirect()->route('post.index')->with('message', 'Votre poste a été créé');
     }
 
     /**
@@ -117,14 +117,14 @@ class PostController extends Controller
     {
         //On récupère le post a modifier 
         $post = Post::find($id);
-        
+
         $this->validate($request,[
             'title'=>'required',
-            'description'=>'required', 
+            'description'=>'required|max:500', 
             'start_date'=>'required', 
             'end_date'=>'required |after:start_date',
-            'price'=>'required',
-            'nb_max'=>"required",
+            'price'=>'required | integer',
+            'nb_max'=>"required | integer ",
             'status'=>'required'
         ]);
        
@@ -151,7 +151,7 @@ class PostController extends Controller
         $post->categories()->sync($request->categories); //synchronise les données avec la table de liaison
         $post->save();
 
-        return redirect()->route('post.index')->with('message','sucess');
+        return redirect()->route('post.index')->with('message','Modification réussie');
     }
 
     /**

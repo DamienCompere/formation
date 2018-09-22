@@ -14,7 +14,7 @@ class FrontController extends Controller
     public function index(){
         
         $posts = Post::published()->limit(2)->get();
-
+        
         return view('front.index', ['posts'=>$posts]);
 
     }
@@ -85,6 +85,6 @@ class FrontController extends Controller
             $mail->to('compere@contact.com')->subject('Contact message');
         });
 
-        return redirect()->back()->with('message', 'sucess');
+        return redirect()->back()->with('message', 'Votre mail a été envoyé avec succès');
     }
 }

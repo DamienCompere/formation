@@ -13,7 +13,7 @@
 <table class="table">
     <thead>
         <tr>
-            <th>Title</th>
+            <th>Titre</th>
             <th>Description</th>
             <th>Lien</th>
         </tr>

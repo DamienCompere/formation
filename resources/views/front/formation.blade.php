@@ -18,14 +18,6 @@
             <ul class="list-group">
                 <li class="list-group-item ">Date de début : {{ ($post->start_date)->format('d/m/Y') }}</li>
                 <li class="list-group-item">Date de fin : {{ ($post->end_date)->format('d/m/Y') }}</li>
-                <li class="list-group-item">Prix : {{$post->price}}$</li>
-                <li class="list-group-item">Nombre max d'étudiant : {{$post->nb_max}}</li>
-                <li class="list-group-item active">Catégorie :  </li>
-                @forelse($post->categories as $category)
-                    <li class="list-group-item">{{ $category->name }} </li>
-                @empty
-                <li>Pas de catégorie pour cette formation</li>
-                @endforelse
                 <li class="list-group-item"><a href="{{ url('post', $post->id) }}" class="card-link btn btn-info">Afficher le poste complet </a>
     </li>
             </ul>

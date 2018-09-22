@@ -21,7 +21,7 @@
             @endif
         </div>
 
-        <button class="btn btn-info">Envoyer</button>
+        <button class="btn btn-info btn-block btn-lg">Envoyer</button>
 
     </form>
 </div>
