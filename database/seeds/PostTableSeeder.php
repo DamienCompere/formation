@@ -11,18 +11,6 @@ class PostTableSeeder extends Seeder
      */
     public function run()
     {
-        // App\Post::create([
-        //     'post_type' => 'formation',
-        // ]);
-        
-        // App\Post::create([
-        //     'post_type' => 'stage',
-        // ]);
-
-        // App\Post::create([
-        //     'post_type' => 'underterminated',
-        // ]);
-
         // On prendra garde de bien supprimer toutes les images avant de commencer les seeders
         Storage::disk('local')->delete(Storage::allFiles());
 
