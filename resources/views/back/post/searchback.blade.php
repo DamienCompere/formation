@@ -28,7 +28,7 @@
         </tr>
     @empty
     <tr>
-        <td>Pas de livre</td>
+        <td>Pas de poste correspondant à votre recherche</td>
     </tr>
      @endforelse
     </tbody>
