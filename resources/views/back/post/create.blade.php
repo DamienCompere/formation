@@ -10,7 +10,7 @@
         <label for="post_type">Formation :</label>
         <select class="form-control" id="post_type" name="post_type">
            @forelse($posts as $id => $post_type )
-                <option  {{ old('post_type') == $id ? 'selected' : ''}} value="{{ $id }}">{{$post_type}}</option>
+                <option  {{ old('post_type') == $post_type ? 'selected' : ''}} value="{{ $post_type }}">{{$post_type == "undetermined" ? "Indéterminé" : $post_type}}</option>
            @empty
            @endforelse
         </select>
@@ -71,9 +71,9 @@
         @endif
     </div>
 
-    <p>Status</p>
-    <label class="radio-inline"><input type="radio" name="status" value="published" {{old('status') == "published" ? 'checked' : ''}}>Published</label>
-    <label class="radio-inline"><input type="radio" name="status" value="unpublished" {{old('status') == "unpublished" ? 'checked' : ''}}>Unpublished</label>
+    <p>Statut</p>
+    <label class="radio-inline"><input type="radio" name="status" value="published" {{old('status') == "published" ? 'checked' : ''}}>Publié </label>
+    <label class="radio-inline"><input type="radio" name="status" value="unpublished" {{old('status') == "unpublished" ? 'checked' : ''}}>Non publié</label>
     <br>
     @if($errors->has('status'))
         <span class="error">{{$errors->first('status')}}</span>
@@ -81,8 +81,8 @@
 
     <br> 
 
-    <p>File</p>
-    <input type="file" id="picture" name="picture" accept=""> 
+    <p>Fichier</p>
+    <input type="file" id="picture" name="picture" accept="" > 
     <br>
   <button type="submit" class="btn btn-primary btn-lg">Envoyer</button>
 

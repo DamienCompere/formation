@@ -68,7 +68,6 @@ class PostController extends Controller
             //mettre à jour la table picture 
             $post->picture()->create([
                 'link'=> $link,
-                'title'=>$request->title_image ?? $request->title
             ]);
         }
         // Attache les catégories avec les posts
@@ -123,8 +122,8 @@ class PostController extends Controller
             'description'=>'required|max:500', 
             'start_date'=>'required', 
             'end_date'=>'required |after:start_date',
-            'price'=>'required | integer',
-            'nb_max'=>"required | integer ",
+            'price'=>'required ',
+            'nb_max'=>"required",
             'status'=>'required'
         ]);
        
@@ -168,7 +167,7 @@ class PostController extends Controller
         //On supprime le post en question
         $post->delete();
 
-        return redirect()->route('post.index')->with('message', 'sucess');
+        return redirect()->route('post.index')->with('message', 'votre post a bien été supprimé');
     }
 
     public function searchback(Request $request){

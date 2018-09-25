@@ -18,10 +18,10 @@ class CreatePostsTable extends Migration
             $table->enum('post_type', ['formation', 'stage', 'undetermined'])->default('undetermined');
             $table->string('title', 100); // obligatoire
             $table->text('description')->nullable(); //non obligatoire
-            $table->dateTime('start_date')->nullable(); 
-            $table->dateTime('end_date')->nullable(); 
-            $table->decimal('price', 8, 2)->default('0.00'); // obligatoire
-            $table->smallInteger('nb_max')->nullable(); 
+            $table->dateTime('start_date'); 
+            $table->dateTime('end_date'); 
+            $table->decimal('price', 8, 2)->default('0.00'); 
+            $table->smallInteger('nb_max'); 
             $table->enum('status', ['published', 'unpublished'])->default('unpublished');
             $table->timestamps();
         });

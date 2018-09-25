@@ -10,20 +10,20 @@
  @include('back.post.partials.flash')
 
 
-<table class="table">
+<table class="table table-responsive">
     <thead>
         <tr>
-            <th>Title</th>
+            <th>Titre</th>
             <th>Type</th>
             <th>Categorie</th>
             <th>Date de début</th>
             <th>Date de fin</th>
             <th>Prix</th>
             <th>Nombre max d'élève</th>
-            <th>Status</th>
-            <th>Show</th>
+            <th>Statut</th>
+            <th>Détails</th>
             <th>Editer</th>
-            <th>Delete</th>
+            <th>Supprimer</th>
         </tr>
     </thead>
     <tbody>
@@ -31,7 +31,7 @@
 
         <tr>
             <td>{{ $post->title }}</td>
-            <td>{{ $post->post_type }}</td>
+            <td>{{ $post->post_type == "undetermined" ? "Indéterminé" : $post->post_type}}</td>
             <td>
                 @forelse($post->categories as $category)
                     <ul>
@@ -43,16 +43,16 @@
             </td>
             <td>{{ $post->start_date->format('d/m/Y')  }}</td>
             <td>{{ $post->end_date->format('d/m/Y') }}</td>
-            <td>{{$post->price}}$</td>
+            <td>{{$post->price}}€</td>
             <td>{{ $post->nb_max }}</td>
-            <td>{{ $post->status }}</td>
+            <td> {{$post->status == "published" ? "Publié" : "Non publié"}}</td>
             <td><a href="{{route('post.show',$post->id)}}" class="btn btn-info">Voir</a></td>  
             <td><a href="{{route('post.edit',$post->id)}}" class="btn btn-dark">Editer</a></td>       
             <td>
                 <form class="delete" action="{{route('post.destroy', $post->id)}}" method="POST">
                     @csrf 
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="submit" class="btn btn-danger">Supprimer</button>
                 </form>
             </td>            
         </tr>

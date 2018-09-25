@@ -14,10 +14,10 @@
     <p>{{$post->description}}</p>
     <div class="list-group">
         <ul class="list-group">
-            <li class="list-group-item">Type : {{$post->post_type}}</li>
+            <li class="list-group-item">Type : {{ $post->post_type == "undetermined" ? "Indéterminé" : $post->post_type}}</li>
             <li class="list-group-item ">Date de début : {{ ($post->start_date)->format('d/m/Y') }}</li>
             <li class="list-group-item">Date de fin : {{ ($post->end_date)->format('d/m/Y') }}</li>
-            <li class="list-group-item">Prix : {{$post->price}}$</li>
+            <li class="list-group-item">Prix : {{$post->price}}€</li>
             <li class="list-group-item">Nombre d'étudiant max : {{$post->nb_max}}</li>
             <li class="list-group-item active">Catégorie(s) :</li>
             @forelse($post->categories as $category)

@@ -9,25 +9,6 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
- .media-left.media-top{
-     margin-right: 2em; 
- }
-
- .media.border-bottom{
-     margin-bottom: 2em;
- }
-.search-container{
-    text-align: center; 
-}
-.error{
-    color: red; 
-}
-.btn-lg{
-    margin-top: 1em; 
-}
-.alert-success{
-    margin: 1em;
-}
 :root {
   --blue: #3490dc;
   --indigo: #6574cd;
@@ -10498,5 +10479,36 @@ a.text-dark:focus {
   background-color: #fff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.media-left.media-top {
+  margin-right: 2em;
+  margin-bottom: 2em;
+}
+
+.search-container {
+  text-align: center;
+}
+
+.btn.btn-dark.btn-lg,
+.btn-group-lg > .btn.btn-dark {
+  margin-top: 2em;
+}
+
+.checkbox label {
+  margin-right: 2em;
+}
+
+label input {
+  margin-right: 5px;
+}
+
+.error {
+  color: red;
+}
+
+.btn.btn-primary.btn-lg,
+.btn-group-lg > .btn.btn-primary {
+  margin-top: 2em;
 }
 

@@ -9,7 +9,7 @@
 
     {{$posts->links()}}
 
-<table class="table">
+<table class="table table-responsive">
     <thead>
         <tr>
             <th>Title</th>
@@ -23,7 +23,7 @@
         <tr>
             <td>{{ $post->title }}</td>
             <td>{{ $post->description }}</td>
-            <td>{{ $post->status }}</td>
+            <td>{{$post->status == "published" ? "Publié" : "Non publié"}}</td>
             <td><a href="{{route('post.show',$post->id)}}" class="btn btn-info">Voir</a></td>            
         </tr>
     @empty
